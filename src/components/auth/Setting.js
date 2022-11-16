@@ -17,25 +17,25 @@ const Setting = () => {
       alert("Mobile no should be only 10 digit");
     } else {
       try {
-        const url = `${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/api/settting`;
-        setUserData({
-          ...userData,
-          authtoken: localStorage.getItem("authtoken"),
-        }); // append auth token
-
+        const url = `${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/api/settings`;
         const response = await fetch(url, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(userData),
+          body: JSON.stringify({
+            name: userData.name,
+            email: userData.email,
+            mobileNo: userData.mobileNo,
+            authtoken: localStorage.getItem("authtoken"),
+          }),
         });
         const json = await response.json();
         console.log(json);
         if (json.hasOwnProperty("status")) {
           alert("Updated profile success");
         } else {
-          alert(json.msg);
+          alert(json.detail);
         }
       } catch (err) {
         alert(err);

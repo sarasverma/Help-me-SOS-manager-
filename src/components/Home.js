@@ -36,8 +36,9 @@ const Home = () => {
       const json = await response.json();
       console.log(json);
       if (json.hasOwnProperty("status")) {
-        alert("Email and message sent to your emergency contacts.");
-        navigate("/track");
+        alert(
+          "Email and message sent to your emergency contacts. They can track you !"
+        );
       } else {
         alert(json.detail);
       }

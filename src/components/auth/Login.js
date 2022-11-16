@@ -26,7 +26,7 @@ const Login = () => {
         localStorage.setItem("token", json.authtoken);
         navigate("/");
       } else {
-        alert(json.error);
+        alert(json.detail || json.error);
       }
     } catch (err) {
       alert(err);
