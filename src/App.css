@@ -19,6 +19,12 @@ body{
     align-items: center;
 }
 
+/* for google maps  */
+.mapContainer{
+    height: 60vh;
+    width: 80vw;
+}
+
 
 @media screen and (max-width: 600px) {
     *{

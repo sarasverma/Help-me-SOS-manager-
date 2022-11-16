@@ -12,7 +12,7 @@ const Home = () => {
   const handleTrack = async (e) => {
     e.preventDefault();
 
-    await navigator.geolocation.getCurrentPosition((pos) => {
+    navigator.geolocation.getCurrentPosition((pos) => {
       setLoc({
         latitude: pos.coords.latitude,
         longitude: pos.coords.longitude,
