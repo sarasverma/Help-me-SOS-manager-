@@ -21,6 +21,7 @@ body{
 
 /* for google maps  */
 .mapContainer{
+    margin-top: 2rem;
     height: 60vh;
     width: 80vw;
 }
