@@ -1,0 +1,18 @@
+#spinner{
+    max-width: 100%;
+}
+
+#spinner > div{
+    width: 5vmax;
+    height: 5vmax;
+    margin: 0 auto;
+    border-bottom: .2rem solid var(--special);
+    border-radius: 50%;
+    animation: spinnerRotate 800ms linear infinite;
+}
+
+@keyframes spinnerRotate{
+    to{
+        transform: rotateZ(-360deg);
+    }
+}

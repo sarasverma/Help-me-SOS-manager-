@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    /* background-color: gray; */
+}
+.mainContainer{
+    min-height: 80vh;
+}
+
+.authForm{
+    /* background-color: rgb(159, 228, 69); */
+    margin-top: 20px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+
+@media screen and (max-width: 600px) {
+    *{
+      font-size: large;
+    }
+}

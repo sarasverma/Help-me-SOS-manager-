@@ -1,0 +1,15 @@
+.mainHeading{
+    text-align: center;
+    color: rgb(251, 6, 35);
+}
+
+.trackContainer{
+    display: grid;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    height: 30vmax;
+    background-image: url("../../public/map.gif");
+    background-repeat: repeat-x;
+}
