@@ -1,6 +1,6 @@
 import React from "react";
 import Spinner from "./layout/Spinner";
-import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
+import { GoogleMap, useLoadScript, MarkerF } from "@react-google-maps/api";
 
 const Track = () => {
   const zoom = 14;
@@ -9,7 +9,6 @@ const Track = () => {
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API,
   });
-  console.log(isLoaded);
 
   return (
     <div className="container">
@@ -21,7 +20,7 @@ const Track = () => {
           zoom={zoom}
           mapContainerClassName="mapContainer"
         >
-          <Marker position={center} />
+          <MarkerF position={center} />
         </GoogleMap>
       )}
     </div>
