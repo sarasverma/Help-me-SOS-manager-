@@ -23,7 +23,7 @@ const Login = () => {
       const json = await response.json();
       console.log(json);
       if (json.hasOwnProperty("authtoken")) {
-        localStorage.setItem("token", json.authtoken);
+        localStorage.setItem("authtoken", json.authtoken);
         navigate("/");
       } else {
         alert(json.detail || json.error);

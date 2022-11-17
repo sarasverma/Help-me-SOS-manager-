@@ -1,4 +1,5 @@
 import { React, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Setting = () => {
   const [userData, setUserData] = useState({
@@ -6,6 +7,7 @@ const Setting = () => {
     email: "",
     mobileNo: "",
   });
+  const navigate = useNavigate();
 
   const onChange = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
@@ -17,25 +19,31 @@ const Setting = () => {
       alert("Mobile no should be only 10 digit");
     } else {
       try {
-        const url = `${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/api/settings`;
-        const response = await fetch(url, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name: userData.name,
-            email: userData.email,
-            mobileNo: userData.mobileNo,
-            authtoken: localStorage.getItem("authtoken"),
-          }),
-        });
-        const json = await response.json();
-        console.log(json);
-        if (json.hasOwnProperty("status")) {
-          alert("Updated profile success");
+        const authtoken = localStorage.getItem("authtoken");
+        if (authtoken) {
+          const url = `${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/api/settings`;
+          const response = await fetch(url, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              name: userData.name,
+              email: userData.email,
+              mobileNo: userData.mobileNo,
+              authtoken: localStorage.getItem("authtoken"),
+            }),
+          });
+          const json = await response.json();
+          console.log(json);
+          if (json.hasOwnProperty("status")) {
+            alert("Updated profile success");
+          } else {
+            alert(json.detail);
+          }
         } else {
-          alert(json.detail);
+          alert("Please login to access this");
+          navigate("/");
         }
       } catch (err) {
         alert(err);
